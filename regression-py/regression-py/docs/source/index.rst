@@ -15,6 +15,7 @@ Welcome to Project_X documentation!
    api_guide
    user_guide
    best_practices
+   customtransformer
 
 
 Indices and tables
