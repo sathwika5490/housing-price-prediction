@@ -767,6 +767,14 @@ def setup_ci_env(c, platform=PLATFORM, force=False):
         # install the current package
         c.run(f"""python -m pip install -e "{HERE}" """)
 
+@task
+def calculate_complexity(c):
+    """
+    Calculate the complexity score for the codebase using Radon.
+    """
+    print("Calculating complexity score using Radon...")
+    result = c.run("radon cc -s -a .", pty=True)
+    print(result.stdout)
 
 _create_task_collection(
     "dev",
@@ -780,6 +788,7 @@ _create_task_collection(
     setup_info,
     _build_docker_image,
     setup_ci_env,
+    calculate_complexity,
 )
 
 
